@@ -1,0 +1,15 @@
+{
+  "name": "dryfire",
+  "owner": {
+    "name": "Salman Ahmad",
+    "url": "https://github.com/kreativlogics"
+  },
+  "description": "dryfire: backtest a Claude Code hook against your own history before you turn it on.",
+  "plugins": [
+    {
+      "name": "dryfire",
+      "source": "./plugins/dryfire",
+      "description": "Replay a PreToolUse hook or rule pack against your past tool calls and see what it would have blocked."
+    }
+  ]
+}

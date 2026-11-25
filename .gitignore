@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.dryfire/
+*.tmp
+.DS_Store

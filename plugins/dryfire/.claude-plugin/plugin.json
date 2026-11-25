@@ -1,0 +1,54 @@
+{
+  "name": "dryfire",
+  "version": "0.1.0",
+  "description": "A hook backtester. Replays a PreToolUse hook or rule pack, read-only, against the tool calls in your past Claude Code transcripts and reports what it would have blocked or asked about, with masked samples. Hooks run in a sandboxed temp home with a time limit, only after you approve them. Stdlib Python, no network, no dependencies.",
+  "author": {
+    "name": "Salman Ahmad",
+    "url": "https://github.com/kreativlogics"
+  },
+  "homepage": "https://github.com/kreativlogics/dryfire",
+  "repository": "https://github.com/kreativlogics/dryfire",
+  "license": "MIT",
+  "keywords": [
+    "hooks",
+    "guardrails",
+    "backtest",
+    "security",
+    "transcripts",
+    "pretooluse"
+  ],
+  "userConfig": {
+    "preset": {
+      "type": "string",
+      "title": "How much history",
+      "description": "quick: 7 days. standard: 30 days. deep: 365 days. A run can pick a different preset.",
+      "options": [
+        "quick",
+        "standard",
+        "deep"
+      ],
+      "default": "standard"
+    },
+    "sandbox": {
+      "type": "string",
+      "title": "Sandbox for hooks under test",
+      "description": "env: temp home and clean environment only. auto: also the macOS sandbox (no network, no writes outside a temp folder) when available. required: refuse to run hooks without the macOS sandbox. This setting can only make the sandbox stricter than auto; to use env, run /dryfire:config set sandbox env.",
+      "options": [
+        "env",
+        "auto",
+        "required"
+      ],
+      "default": "auto"
+    },
+    "timeout_seconds": {
+      "type": "string",
+      "title": "Time limit per hook call (seconds)",
+      "description": "A hook call that runs longer is stopped and counted as an error. This setting can only lower the limit below 10; to raise it (up to 120), run /dryfire:config set timeout_seconds N.",
+      "default": "10"
+    }
+  },
+  "network": {
+    "hosts": []
+  },
+  "icon": ".claude-plugin/icon.png"
+}

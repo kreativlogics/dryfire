@@ -1,0 +1,22 @@
+# A made-up destructive_command_guard pack for tests.
+schema_version: 1
+id: demo.storage
+name: Demo storage pack
+version: 1.0.0
+description: Blocks wiping demo buckets.
+keywords: [demo-cli, rmdir]
+destructive_patterns:
+  - name: bucket-wipe
+    pattern: 'demo-cli\s+bucket\s+(?:rm|delete)\b.*--all'
+    severity: critical
+    description: Deletes every object in a bucket
+    executables: [demo-cli]
+  - name: soft-wipe
+    pattern: 'demo-cli\s+cache\s+clear'
+    severity: medium
+  - name: rmdir-root
+    pattern: '\brmdir\s+/(?:\s|$)'
+    severity: low
+safe_patterns:
+  - name: dry-run
+    pattern: '--dry-run'
