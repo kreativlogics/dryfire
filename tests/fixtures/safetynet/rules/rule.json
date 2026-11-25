@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "rules": ["demo", "someone/remote#main/book"],
+  "overrides": {"demo/no-prune": {"reason": "Prune is off-limits here"}, "demo/missing": "off"},
+  "transparent_wrappers": ["with-env"]
+}

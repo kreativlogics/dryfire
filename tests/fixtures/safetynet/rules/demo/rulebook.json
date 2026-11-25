@@ -1,0 +1,19 @@
+{
+  "name": "demo",
+  "rulebook_version": 2,
+  "allowed_commands": ["git", "docker"],
+  "options_with_values": ["--format"],
+  "rules": [
+    {"name": "no-prune", "match": {"command_path": ["docker", "system", "prune"], "any_args": ["-a", "--all"]},
+     "reason": "Prune removes images"},
+    {"name": "no-clean", "match": {"command_path": ["git", "clean"], "exclude_args": ["-n", "--dry-run"]},
+     "reason": "Clean deletes untracked files"},
+    {"name": "bad-cmd", "match": {"command_path": ["rm"]}, "reason": "rm is not in allowed_commands"}
+  ],
+  "tests": [
+    {"command": "docker system prune -a", "expect": "blocked", "rule": "no-prune"},
+    {"command": "docker system prune", "expect": "allowed"},
+    {"command": "git clean -fd", "expect": "blocked"},
+    {"command": "git clean -n", "expect": "allowed"}
+  ]
+}

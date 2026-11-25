@@ -1,0 +1,2 @@
+{"version": 1, "rules": [{"name": "no-force", "command": "git", "subcommand": "push", "block_args": ["--force", "-f"],
+  "reason": "No force push"}]}
